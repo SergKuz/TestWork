@@ -23,15 +23,15 @@ public class UsersController {
     // end::get-aggregate-root[]
 
     @PostMapping("/users")
-    User create(@RequestBody User newUser) {
+    UserDTO create(@RequestBody UserDTO newUser) {
         return usersService.save(newUser);
     }
 
     // Single item
 
     @GetMapping("/users/{id}")
-    User findById(@PathVariable Long id) {
-        return usersService.findById(id).get();
+    UserDTO findById(@PathVariable Long id) {
+        return usersService.findById(id);
     }
 
     @DeleteMapping("/users/{id}")

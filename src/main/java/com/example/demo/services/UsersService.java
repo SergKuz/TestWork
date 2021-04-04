@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import com.example.demo.converters.UsersConverter;
 import com.example.demo.dto.ListElementDTO;
+import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,14 @@ public class UsersService {
         return listElementDTOS;
     }
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    public UserDTO findById(Long id) {
+        return usersConverter.entityToDto(userRepository.findById(id).get());
     }
 
-    public User save(User books) {
-        return userRepository.save(books);
+    public UserDTO save(UserDTO books) {
+        return usersConverter.entityToDto(
+                userRepository.save(
+                        usersConverter.dtoToEntity(books)));
     }
 
     public void delete(Long id) {

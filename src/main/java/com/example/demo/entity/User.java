@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Data
-@Entity
+@Entity(name = "users")
 @Accessors(chain = true)
 public class User {
 
