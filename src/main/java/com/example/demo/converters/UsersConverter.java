@@ -5,6 +5,8 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class UsersConverter {
 
@@ -12,7 +14,7 @@ public class UsersConverter {
         return new UserDTO()
                 .setId(user.getId())
                 .setUsername(user.getUsername())
-                .setBirthDay(user.getBirthDay())
+                .setBirthDay(new Date(user.getBirthDay()))
                 .setFullName(user.getFullName())
                 .setEmail(user.getEmail())
                 .setGender(user.getGender())
@@ -23,7 +25,7 @@ public class UsersConverter {
         return new User()
                 .setId(user.getId())
                 .setUsername(user.getUsername())
-                .setBirthDay(user.getBirthDay())
+                .setBirthDay(user.getBirthDay().getTime())
                 .setFullName(user.getFullName())
                 .setEmail(user.getEmail())
                 .setGender(user.getGender())
